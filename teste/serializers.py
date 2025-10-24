@@ -1,9 +1,39 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 from .models import Profissional
 
-
-#transforma objetos python em json e vice-versa
-class ProfissionalSerializer(serializers.ModelSerializer): # sempre segue essa analogia, nome da classe + o impor.ModelImpot
+# Serializador para User
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Profissional #o modelo q sera serializado
-        fields = '__all__' #adiciona tudo na api
+        model = User
+        fields = ['id', 'username', 'email', 'password']
+        extra_kwargs = {'password': {'write_only': True}}
+
+    def create(self, validated_data):
+        password = validated_data.pop('password')
+        user = User(**validated_data)
+        user.set_password(password)
+        user.save()
+        return user
+
+# Serializador para Profissional, incluindo o usuário
+class ProfissionalSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(write_only=True)
+    email = serializers.EmailField(write_only=True)
+    password = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = Profissional
+        fields = ['username', 'email', 'password', 'telefone', 'cpf']
+
+    def create(self, validated_data):
+        username = validated_data.pop('username')
+        email = validated_data.pop('email')
+        password = validated_data.pop('password')
+
+        user = User.objects.create(username=username, email=email)
+        user.set_password(password)
+        user.save()
+
+        profissional = Profissional.objects.create(user=user, **validated_data)
+        return profissional

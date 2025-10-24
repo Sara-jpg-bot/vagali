@@ -1,0 +1,213 @@
+/* TELA DE PERFIL */
+
+    body {
+      background-color: #fdfbdd98;
+      font-family: Arial, sans-serif;
+    }
+    .perfil-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: #fdfbdd98;
+      border-radius: 10px;
+    
+      overflow: hidden;
+      padding: 20px;
+      position: relative; 
+    }
+    .perfil-header {
+      display: flex;
+      align-items: center;
+      background-color: #5f5b5b;
+      color: white;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #575454;
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .perfil-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid white;
+      margin-right: 30px;
+    }
+    .perfil-info {
+        flex-grow: 1;
+    }
+    .perfil-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; 
+        gap: 5px; 
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+    .btn-follow {
+      background-color: white;
+      color: #3f3d3d;
+      font-weight: bold;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 20px;
+      white-space: nowrap;
+    }
+
+    .btn-follow:hover{
+      color: white;
+      background-color: #3f3d3d;
+    }
+
+    .estrelas-header { 
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-top: 5px; /
+    }
+    .estrelas-header i {
+      color: gold;
+      font-size: 20px;
+    }
+    .estrelas-header strong {
+        color: white; 
+        font-size: 1.1em;
+    }
+
+    /* Top-right menu icon */
+    .menu-options-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 1.8rem;
+        color: white;
+        cursor: pointer;
+        z-index: 10; 
+    }
+    
+    .perfil-header {
+        position: relative;
+    }
+
+    .feedbacks {
+      background-color: #faf6d2;
+      padding: 15px;
+      border-radius: 10px;
+      color: #f7ecec;
+      min-height: 400px; /* Adjusted to visually match gallery height */
+      display: flex;
+      flex-direction: column;
+      gap: 15px; /* Space between feedback items */
+    }
+    .feedbacks h5 {
+      color: white;
+      font-weight: bold;
+      margin-bottom: 0; /* Remove default margin from h5 */
+    }
+    .feedback {
+        background-color: rgba(133, 37, 20, 0.918); /* Slightly transparent white for feedback items */
+        padding: 10px;
+        border-radius: 8px;
+    }
+    .feedback p {
+      font-size: 0.9rem;
+      margin-bottom: 5px; /* Adjust margin for paragraphs within feedback */
+    }
+    .feedback strong {
+        color: #c9bfbf;
+    }
+    .feedback i {
+        color: gold;
+        font-size: 0.9rem; /* Smaller stars for feedback */
+    }
+
+    .galeria img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .side-buttons .btn {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      background-color: #5f5b5b;
+      color: white;
+      font-weight: bold;
+      border: none;
+      padding: 12px 10px;
+    }
+
+    .side-buttons .btn:hover  {
+      background-color: #3f3d3d;
+    }
+    .side-buttons {
+      margin-top: 0; /* Align with gallery */
+    }
+    /* Specific adjustments for the layout based on the image */
+    .main-content-row {
+        margin-top: 0 !important; /* Remove default margin */
+    }
+    /* Removed gallery-and-buttons-col from col-md-7, added new inner wrapper */
+    .gallery-top-content { /* New class for the row containing gallery and buttons */
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        width: 100%; /* Ensure it takes full width of its parent col-md-7 */
+    }
+    .gallery-inner-col {
+        flex-grow: 1; /* Allow gallery to take most space */
+    }
+    .side-buttons-inner-col {
+        flex-shrink: 0; /* Prevent buttons from shrinking */
+        width: 120px; /* Fixed width for buttons based on image visual */
+        min-width: 120px; /* Ensure it doesn't get too small */
+    }
+
+    /* Pagination Styles */
+    .gallery-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px; /* Space above pagination */
+        /* margin-bottom: 20px; This will be handled by parent container spacing */
+        background-color: #f8f9fa; /* Light background for pagination */
+        padding: 10px 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .gallery-pagination .page-item {
+        background-color: #ddd;
+        color: #333;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-weight: bold;
+    }
+    .gallery-pagination .page-item:hover:not(.active):not(.disabled) {
+        background-color: #c46034;
+        color: white;
+    }
+    .gallery-pagination .page-item.active {
+        background-color: #c46034; /* Active page color */
+        color: white;
+    }
+    .gallery-pagination .page-item.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    .gallery-pagination .arrow {
+        font-size: 1.2rem;
+        padding: 5px 8px;
+        border-radius: 5px;
+    }
+
+    /* Ensure col-md-7 acts as a column container for its children */
+    .col-md-7 {
+        display: flex;
+        flex-direction: column;
+        gap: 15px; /* Space between the gallery/buttons wrapper and the pagination */
+    }
