@@ -3,13 +3,14 @@ from django.contrib.auth.models import User #nde serão guardados username, emai
 from .models import Profissional
 
 # Serializador para User
-class UserSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer): #cria automaticamente campos baseados no modelo.
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password'] # fields aceita esses dados
+        fields = ['id', 'username', 'email', 'password'] # os que irão pro serializer: que faz rota de api
+        #ou seja, conecta os dados que estão sendo inseridos com o banco e vice versa
         extra_kwargs = {'password': {'write_only': True}} # faz com q a senha não volte na api, um passo de segurança
 
-    def create(self, validated_data):#é o dicionário dos dados que passaram pela validação do serializer
+    def create(self, validated_data):#confirma se os dados foram inseridos corretamente
         password = validated_data.pop('password') #remove a senha para n ser salva em texto
         user = User(**validated_data) #fazs a instancia com os campos do user
         user.set_password(password) #converte a senha em hash seguro
@@ -19,18 +20,18 @@ class UserSerializer(serializers.ModelSerializer):
 # Serializador para Profissional, incluindo o usuário
 class ProfissionalSerializer(serializers.ModelSerializer):
     #adiciona os campos do user junto com os demais, mas n retornem como respostas
-    username = serializers.CharField(write_only=True)
+    username = serializers.CharField(write_only=True) #write_only n traz os dados de volta como resposta
     email = serializers.EmailField(write_only=True)
     password = serializers.CharField(write_only=True)
 
     class Meta: #Meta.fields inclui esses campos extras junto com os campos reais do Profissional (telefone, cpf
         model = Profissional
-        fields = ['username', 'telefone', 'cpf',  'email', 'password']
+        fields = ['username', 'telefone', 'cpf',  'email', 'password'] #mostra tudo que sera enviado e retornado
 
     def create(self, validated_data): #criando os campos, para armazenar dados novos
-        username = validated_data.pop('username') 
-        email = validated_data.pop('email')
-        password = validated_data.pop('password')
+        username = validated_data.pop('username') #valida o nome para ver se está nas exigencias
+        email = validated_data.pop('email') # ''
+        password = validated_data.pop('password') #''
 
         user = User.objects.create(username=username, email=email) #cria o usuário no banco
         user.set_password(password) #verifica a senha

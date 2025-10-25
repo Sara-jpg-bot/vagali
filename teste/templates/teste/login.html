@@ -1,30 +1,41 @@
-<!-- teste/templates/teste/login.html -->
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Login - VagAli</title>
-</head>
-<body>
-    <h1>Login</h1>
-    
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+{% extends "teste/base.html" %}
 
-    <form method="POST">
-        {% csrf_token %}
-        <label for="username">Usuário:</label>
-        <input type="text" name="username" id="username" required>
-        <br><br>
-        <label for="password">Senha:</label>
-        <input type="password" name="password" id="password" required>
-        <br><br>
-        <button type="submit">Entrar</button>
-    </form>
-</body>
-</html>
+{% block title %}Login - VAGALI{% endblock %}
+
+{% block content %}
+<section class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="login-cadastro-container">
+
+        <div id="loginForm">
+            <h1 class="text-center mb-4">Login VagAli</h1>
+            
+            {% if erro %}
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i> {{ erro }}
+                </div>
+            {% endif %}
+
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="vagali@gmail.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha:</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="********" required>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <button type="submit" class="btn btn-success">Entrar</button>
+                </div>
+            </form>
+            <div class="text-center">
+                <p class="text-muted">Ainda não tem conta?
+                   <a href="{% url 'cadastro' %}" class="btn btn-link toggle-link">Cadastre-se aqui</a>
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

@@ -13,22 +13,27 @@ class ProfissionalCreateView(generics.CreateAPIView):
     serializer_class = ProfissionalSerializer
     permission_classes = [AllowAny]  # qualquer pessoa pode se cadastrar
 
+def index(request):
+    return render(request, 'index.html')
+
+
 
 
 #faz a conexão com o html
 def login_view(request): #o request puxa
+    erro = None
     if request.method == 'POST': # metodo post: é para adicionar dados
-        username = request.POST.get('username') # tratá do html os dados que foram inseridos no 'username' para o username
+        email = request.POST.get('email') # tratá do html os dados que foram inseridos no 'username' para o username
         password = request.POST.get('password') #traz os dados que foram inseridos no 'password' para o password
 
-        user = authenticate(request, username=username, password=password) # confere se as informações são iguais
+        user = authenticate(request, username=email, password=password) # confere se as informações são iguais
         if user is not None: # se forem iguais
             login(request, user)
-            return redirect('home')  # redireciona para a página inicial
+            return redirect('index')  # redireciona para a página inicial
         else: # se estiver incorreto, irá barrar
-            messages.error(request, 'Usuário ou senha incorretos')
+            erro = 'Email ou senha incorretos'
 
-    return render(request, 'teste/login.html')
+    return render(request, 'teste/login.html', {'erro': erro})
 
 def cadastro_view(request):
     if request.method == 'POST':
@@ -71,5 +76,4 @@ def cadastro_view(request):
 
 
 # Página inicial
-def home_view(request):
-    return render(request, 'teste/home.html')
+
