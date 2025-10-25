@@ -1,0 +1,855 @@
+/* ================= VARIÁVEIS ================= */
+:root {
+    --cor-principal: #8E270E;
+    --cor-destaque: orange;
+    --cor-fundo: #fdfbdd98;
+    --cor-texto: #333;
+}
+
+/* ================= GLOBAL ================= */
+body {
+    background-color: var(--cor-fundo);
+    margin: 0;
+    font-family: 'Roboto', sans-serif; /* Usando Roboto consistentemente */
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    background-color: var(--cor-principal);
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-brand .span-logo {
+    color: #c46034;
+    font-weight: 700;
+}
+
+.navbar-brand {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif; /* Mantendo para o brand, se for intencional */
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: var(--cor-destaque);
+}
+
+.navbar-logo {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+}
+
+.nav-link {
+    color: #575454;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #c46034;
+}
+
+.nav-link.active {
+    background-color: #c46034 !important;
+    color: white !important;
+}
+
+/* Botão de cadastro/login */
+.nav-link.cadastro-btn {
+    border: 1px solid #c46034;
+    border-radius: 5px;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+}
+
+.nav-link.cadastro-btn:hover {
+    background-color: #c46034;
+    color: white;
+}
+
+/* Barra de pesquisa */
+.search-bar-section {
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+.input-group #search-input {
+    border-radius: 50px !important;
+    border: 1px solid #c46034;
+    padding-left: 20px;
+}
+
+.input-group .btn-primary {
+    background-color: #c46034;
+    border-color: #c46034;
+    border-radius: 50px !important;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+}
+
+.input-group .btn-primary:hover {
+    background-color: #a8512f;
+    border-color: #a8512f;
+}
+
+/* ================= CATEGORIAS ================= */
+.categorias {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px 0;
+    flex-wrap: wrap;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.categoria-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    font-size: 0.9em;
+    color: #575454;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.categoria-btn i {
+    font-size: 1.5em;
+    color: var(--cor-principal);
+    transition: color 0.3s ease;
+    margin-bottom: 5px;
+}
+
+.categoria-btn:hover {
+    transform: translateY(-5px);
+    color: #c46034;
+}
+
+/* ================= CAROUSEL - Estilos e Efeitos ================= */
+
+/* Estilos para o contêiner principal do carrossel */
+#carousel-custom {
+    max-width: 90%;
+    margin: 0 auto 40px auto;
+    overflow: hidden;
+    position: relative; /* Importante para posicionar os botões */
+}
+
+/* Estilos para os botões de navegação */
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute; /* Posição absoluta em relação ao carrossel */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-control-next {
+    right: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    opacity: 1;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background-color: #3f3d3d;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    opacity: 0.8;
+}
+
+.carousel-control-prev-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+}
+
+.carousel-control-next-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* Contêiner das imagens, responsável pelo movimento */
+.carousel-track {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.6s ease-in-out;
+    width: fit-content;
+    /* margin: 0 auto; - Removido pois o JS calcula a centralização via translate */
+    /* Adicionando estas duas linhas para evitar o "salto" */
+    height: 300px; /* Define uma altura fixa baseada na imagem maior */
+    align-items: flex-end; /* Alinha as imagens na parte inferior do contêiner */
+}
+
+/* Estilos base para todas as imagens do carrossel */
+.img-slide {
+    width: 250px; /* Largura fixa para todas as imagens */
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Estilo para a imagem central em destaque */
+.img-slide.destaque-mid {
+    width: 300px; /* Aumenta a largura da imagem central */
+    height: 300px; /* Aumenta a altura para destacar */
+    transform: scale(1.1); /* Mantém o efeito de escala */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+/* Efeito de subir ao passar o mouse */
+.img-slide:hover {
+    transform: translateY(-5px) scale(1.05); /* Combina translate com a escala do destaque para um hover mais suave */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+/* Remove o hover se for a imagem de destaque */
+.img-slide.destaque-mid:hover {
+    transform: scale(1.1); /* Mantém apenas a escala de destaque, remove o translateY adicional */
+    cursor: default; /* Remove o cursor de pointer, já que já está em destaque */
+}
+
+/* ================= RESPONSIVIDADE CAROUSEL ================= */
+
+@media (max-width: 991px) {
+    .img-slide {
+        width: 200px;
+        height: 180px;
+    }
+    .img-slide.destaque-mid {
+        width: 250px;
+        height: 250px;
+        transform: scale(1.0);
+    }
+    .img-slide:hover {
+        transform: translateY(-5px) scale(1.0);
+    }
+}
+
+@media (max-width: 767px) {
+    .img-slide {
+        width: 150px;
+        height: 120px;
+    }
+    .img-slide.destaque-mid {
+        width: 200px;
+        height: 200px;
+        transform: scale(1.0);
+    }
+}
+/* ================= PERFIS E CARDS DE SEÇÃO ================= */
+.perfis {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0 20px;
+}
+
+.perfis-btn h2 {
+    font-weight: bold;
+    color: #3f3d3d;
+    transition: color 0.3s ease;
+}
+
+.perfis-btn:hover h2 {
+    color: #c46034;
+}
+
+/* Estilo para os botões de filtro */
+.btn-filter {
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    color: #495057;
+    margin: 0 8px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilo para o botão ativo */
+.btn-filter.active {
+    /* Cor principal do seu tema para ativo */
+    background-color: #c46034; 
+    color: #fff;
+    border-color: #c46034;
+    box-shadow: 0 4px 8px rgba(196, 96, 52, 0.3); /* Sombra customizada */
+}
+
+.btn-filter:hover:not(.active) {
+    background-color: #e9ecef;
+    border-color: #adb5bd;
+}
+
+/* >>> AJUSTE DE INTEGRAÇÃO DO FILTRO <<< */
+/* Garante que a seção de cards utilize a estrutura de grid do Bootstrap e fique centralizada */
+.cards-section {
+    width: 100%; /* Ocupa a largura total do seu container */
+    max-width: 1200px; /* Limite a largura para melhor visualização */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0; /* Espaçamento padrão */
+    /* Garante que o display: none do JS funcione e não cause conflito */
+}
+/* Fim do ajuste de integração do filtro */
+
+
+/* =================== ESTILOS DOS CARDS (Geral) =================== */
+
+.card-perfil {
+    border: none;
+    background-color: #f8f8e0; /* Fundo para o card de perfil (Destaques) */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.card-perfil:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-perfil .perfil-img { /* Seletor mais específico para a imagem do card de perfil */
+    width: 60px;
+    height: 60px;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    border-radius: 50%;
+    border: 2px solid #c46034;
+    flex-shrink: 0;
+}
+
+.card-footer {
+    background-color: transparent;
+    border-top: none;
+    padding: 10px 0 0;
+}
+
+.description-text a {
+    color: #c46034;
+    font-weight: 500;
+}
+
+/* Truncamento de texto para evitar estouro */
+.card-perfil .card-body h5, /* Para o título do perfil */
+.card-perfil .card-body p { /* Para a descrição */
+    white-space: normal; /* Permite que o texto quebre a linha normalmente */
+    word-wrap: break-word; /* Quebra palavras longas se não houver espaço */
+}
+
+.card-perfil .card-body .description-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limita a 3 linhas */
+    -webkit-box-orient: vertical;
+    display: box; /* Padrão para navegadores modernos */
+    line-clamp: 3;
+    box-orient: vertical;
+    max-height: 4.2em; /* Aproximadamente 1.4em por linha * 3 linhas */
+}
+
+/* =================== ESTILOS DOS CARDS DE DEMANDA (Disponíveis e Minhas Demandas) =================== */
+
+/* Estilo geral para os cards de demanda (APLICADO AGORA TAMBÉM À NOVA CLASSE) */
+.card-demanda, .card-minha-demanda {
+    background-color: #f0f8ff; /* Azul claro suave para demanda */
+    border: 1px solid #d0e8f8;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-demanda:hover, .card-minha-demanda:hover {
+    transform: translateY(-5px); /* Efeito de elevação ao passar o mouse */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-demanda .card-footer, .card-minha-demanda .card-footer {
+    background-color: transparent;
+    border-top: none;
+    padding-top: 0.5rem;
+}
+
+/* Ajustes para o texto de orçamento */
+.price-info span {
+    font-size: 0.9rem;
+}
+
+/* Estilo do card-perfil para que o card Disponíveis se pareça com Demanda */
+.card-perfil.card-demanda {
+    background-color: #f0f8ff; 
+    border: 1px solid #d0e8f8;
+}
+
+/* Estilo para o botão PROPOR (Disponíveis) - usando .btn-dark no HTML */
+.card-demanda .btn-dark, .card-perfil .btn-dark {
+    background-color: #343a40; /* Cinza escuro */
+    border-color: #343a40;
+    transition: background-color 0.3s ease;
+}
+
+.card-demanda .btn-dark:hover, .card-perfil .btn-dark:hover {
+    background-color: #1d2124;
+    border-color: #1a1e21;
+}
+
+/* =================== ESTILOS DOS BOTÕES DE AÇÃO (MINHAS DEMANDAS) =================== */
+
+/* Estilo para o botão EDITAR (ajustado para usar a classe btn-secondary do Bootstrap) */
+.card-minha-demanda .btn-secondary,
+.card-dark .btn-secondary {
+    background-color: #6c757d !important; /* Cinza do Bootstrap */
+    border-color: #6c757d !important;
+    color: white !important;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.card-minha-demanda .btn-secondary:hover,
+.card-dark .btn-secondary:hover {
+    background-color: #5a6268 !important;
+    border-color: #545b62 !important;
+    color: white !important;
+}
+
+/* Estilo para o botão EXCLUIR (vermelho de perigo) */
+.btn-danger {
+    background-color: #dc3545 !important; /* Vermelho padrão */
+    border-color: #dc3545 !important;
+    color: white !important;
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #c82333 !important;
+    border-color: #bd2130 !important;
+}
+
+
+/* Adiciona a animação de fade-in para as seções */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplica a animação nas seções de cards */
+.cards-section {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+
+/* ================= TELA DE PERFIL ================= */
+.perfil-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #f8f8e0; /* Fundo do container para se diferenciar um pouco */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+}
+
+.perfil-header {
+    display: flex;
+    align-items: center;
+    background-color: #5f5b5b;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #575454;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.perfil-img { /* Imagem grande do perfil na página de perfil */
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid white;
+    margin-right: 30px;
+}
+
+.perfil-info {
+    flex-grow: 1;
+}
+
+.perfil-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.btn-follow {
+    background-color: white;
+    color: #3f3d3d;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 20px;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-follow:hover {
+    color: white;
+    background-color: #3f3d3d;
+}
+
+.estrelas-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.estrelas-header i {
+    color: gold;
+    font-size: 20px;
+}
+
+.estrelas-header strong {
+    color: white;
+    font-size: 1.1em;
+}
+
+.menu-options-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: white;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.feedbacks {
+    background-color: #e0d9b4; /* Fundo mais escuro para o container dos feedbacks */
+    padding: 15px;
+    border-radius: 10px;
+    color: #3f3d3d;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feedbacks h5 {
+    color: #3f3d3d;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.feedback {
+    background-color: #f8f8e0; /* Fundo para os cards de feedback */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.feedback p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.feedback strong {
+    color: #575454;
+}
+
+.feedback i {
+    color: gold;
+    font-size: 0.9rem;
+}
+
+.galeria img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.side-buttons .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #5f5b5b;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 12px 10px;
+}
+
+.side-buttons .btn:hover {
+    background-color: #3f3d3d;
+}
+
+.gallery-top-content {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+}
+
+.gallery-inner-col {
+    flex-grow: 1;
+}
+
+.side-buttons-inner-col {
+    flex-shrink: 0;
+    width: 120px;
+    min-width: 120px;
+}
+
+.gallery-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    background-color: #f8f9fa;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-pagination .page-item {
+    background-color: #ddd;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: bold;
+}
+
+.gallery-pagination .page-item:hover:not(.active):not(.disabled) {
+    background-color: #c46034;
+    color: white;
+}
+
+.gallery-pagination .page-item.active {
+    background-color: #c46034;
+    color: white;
+}
+
+.gallery-pagination .page-item.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.gallery-pagination .arrow {
+    font-size: 1.2rem;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.col-md-7 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    background-color: #5f5b5b;
+    color: white;
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.footer .social-icon {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.footer .social-icon:hover {
+    color: #c46034;
+}
+
+.footer a {
+    color: #fff;
+}
+
+/* ======================= CHAT ======================= */
+@keyframes bounce-gentle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.bounce-gentle {
+    animation: bounce-gentle 2s infinite;
+}
+
+.typing-indicator span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #9CA3AF;
+    margin: 0 1px;
+    animation: typing 1.4s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+.typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes typing {
+    0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+    40% { transform: scale(1); opacity: 1; }
+}
+
+#supportButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    max-width: 90%;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.chat-header {
+    background: #8E270E;
+    color: #fff;
+    padding: 10px;
+    font-weight: bold;
+}
+
+.chat-messages {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.chat-input {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+    flex: 1;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.chat-input button {
+    background: #8E270E;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #8E270E;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 10000;
+}
+
+/* ================= RESPONSIVO ================= */
+
+/* CELULARES: Padrão, já configurado para 1 coluna pelo Bootstrap 'row-cols-1' */
+@media (max-width: 767px) { /* Tudo abaixo de tablet */
+    /* Ajustes específicos para o carrossel em telas muito pequenas */
+    #carousel .carousel-control-prev,
+    #carousel .carousel-control-next {
+        width: 15%; /* Botões de controle maiores para facilitar o toque */
+        opacity: 0.8;
+    }
+    #carousel .img-slide {
+        height: 150px; /* Altura um pouco menor para celulares */
+    }
+
+    .card-perfil {
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+        min-height: auto;
+    }
+    .card-perfil .card-footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    .card-perfil .card-footer button {
+        width: 80%;
+    }
+}
+
+/* TABLETS: 768px a 991px (padrão Bootstrap md) */
+@media (min-width: 768px) and (max-width: 991px) {
+    #carousel .img-slide {
+        height: 180px; /* Altura para tablets */
+    }
+}
+
+/* DESKTOPS: 992px e acima (padrão Bootstrap lg) */
+@media (min-width: 992px) {
+    #carousel .img-slide {
+        height: 220px; /* Altura para desktops */
+    }
+}
