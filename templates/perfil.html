@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PERFIL VAGALI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="main.css">
+<link rel="stylesheet" href="perfil.css">
+</head>
+<body>
+    <header class="navbar navbar-expand-lg sticky-top p-4">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/Logo/LOGOBRANCO.png" alt="Vagali Logo" class="navbar-logo me-2"> Vag<span class="span-logo">Ali</span>
+            </a>
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu-navegacao">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <nav class="navbar-collapse collapse justify-content-end" id="menu-navegacao">
+                <ul class="nav nav-pills d-block d-md-flex">
+                    <li class="nav-item fw-bold">
+                        <a href="./index.html" class="nav-link active"> <i class="me-2 bi bi-suitcase-lg"></i> Sobre o Vagali</a>
+                    </li>
+                    <li class="nav-item dropdown fw-bold">
+                        <a href="#" class="nav-link dropdown-toggle" id="categoriasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="me-2 bi bi-list"></i> Categorias
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="categoriasDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-briefcase"></i> Administração</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-brush"></i> Design</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-code-slash"></i> Tecnologia</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-heart-pulse"></i> Saúde</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-currency-dollar"></i> Finanças</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-translate"></i> Idiomas</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-people"></i> Recursos Humanos</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-building"></i> Engenharia</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item fw-bold" href="#"><i class="bi bi-grid"></i> Ver Todas as Categorias</a></li>
+                        </ul>
+                    </li>
+    
+                    <!-- Linguagem Dropdown -->
+                    <li class="nav-item dropdown fw-bold">
+                        <a href="#" class="nav-link dropdown-toggle" id="linguagemDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="me-2 bi bi-globe"></i> Linguagem
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="linguagemDropdown">
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-flag"></i> Português (BR)</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-flag"></i> Inglês</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="bi bi-flag"></i> Espanhol</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                        </ul>
+                    </li>
+    
+                    <li class="nav-item fw-bold">
+                        <a href="#rodape" class="nav-link"><i class="me-2 bi bi-chat-left-text"></i> Fale Conosco</a>
+                    </li>
+                    <li class="nav-item fw-bold">
+                        <a href="./cadastro.html" class="nav-link" target="_blank"> <i class="me-2 bi bi-person-fill"></i> Cadastro</a>
+                    </li>
+                    <li class="nav-item fw-bold">
+                        <a href="./cadastro.html" class="nav-link" target="_blank"> <i class="me-2 bi bi-person-fill"></i> Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+        <div class="container perfil-container">
+            <i class="bi bi-three-dots-vertical menu-options-icon"></i>
+
+            <div class="perfil-header">
+            <img src="images/Perfil/confeiteira.jpg" alt="Juliana Doces" class="perfil-img">
+            <div class="perfil-info">
+                <h3 class="mb-1">JULIANA DOCES</h3>
+                <p class="mb-1 text-uppercase">Empreendedora, Confeiteira</p>
+                <p class="mb-2">Rio de Janeiro, Brasil</p>
+            </div>
+            <div class="perfil-actions">
+                <button class="btn-follow mb-5 mt-4">+ SEGUIR</button>
+                <div class="estrelas-header">
+                <span>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                </span>
+                <strong>5/5</strong>
+                </div>
+            </div>
+            </div>
+
+            <div class="row g-3 main-content-row">
+            <div class="col-md-5">
+                <div class="feedbacks">
+                <h5>FEEDBACKS</h5>
+                <div class="feedback">
+                    <p>“Simplesmente perfeito! O bolo estava delicioso, super fresquinho e com um recheio de dar água na boca. Todo mundo elogiou e já quero encomendar o próximo.”<br><strong>— Mariana M.</strong> <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i></p>
+                </div>
+                <div class="feedback">
+                    <p>“As frutas em destaque fizeram o maior sucesso no aniversário da minha filha. Todo mundo queria saber onde eu tinha encomendado. Atendimento excelente e entrega pontual.”<br><strong>— Juliana D.</strong> <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i></p>
+                </div>
+                <div class="feedback">
+                    <p>“Sabor caseiro com toque profissional! Encomendei para um café com minha família e foi a melhor escolha.”<br><strong>— Renato D.</strong> <i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i><i class="bi bi-star-fill text-warning"></i></p>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-7"> <div class="gallery-top-content"> <div class="row g-2 galeria gallery-inner-col" id="productGallery">
+                    </div>
+                    <div class="side-buttons side-buttons-inner-col">
+                        <button class="btn">SOLICITAR SERVIÇOS</button>
+                        <button class="btn">CONSULTAR AGENDAR</button>
+                        <button class="btn">FEEDBACK</button>
+                        <button class="btn">DENUNCIAR CONTA</button>
+                        <div class="d-flex justify-content-center mt-3">
+                            <i class="bi bi-chevron-down text-dark" style="font-size: 2rem;"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="gallery-pagination" id="galleryPagination">
+                    <span class="page-item arrow" data-page="prev"><i class="bi bi-chevron-left"></i></span>
+                    <span class="page-item active" data-page="1">1</span>
+                    <span class="page-item" data-page="2">2</span>
+                    <span class="page-item arrow" data-page="next"><i class="bi bi-chevron-right"></i></span>
+                </div>
+            </div>
+            </div>
+
+        </div>
+        <footer class="footer mt-5 py-4" id="rodape">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h5 class="text-white mb-3">VAGALI</h5>
+                        <p class="text-white-50 small">Conectando você aos melhores serviços autônomos locais.</p>
+                    </div>
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <h5 class="text-white mb-3">Links Úteis</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="text-white-50 text-decoration-none small">Sobre o Vagali</a></li>
+                            <li><a href="#" class="text-white-50 text-decoration-none small">Categorias</a></li>
+                            <li><a href="#" class="text-white-50 text-decoration-none small">Cadastro</a></li>
+                            <li><a href="#" class="text-white-50 text-decoration-none small">Fale Conosco</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h5 class="text-white mb-3">Redes Sociais</h5>
+                        <div class="social-links d-flex justify-content-center gap-3">
+                            <a href="#" class="social-icon"><i class="bi bi-facebook fs-4"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-instagram fs-4"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-linkedin fs-4"></i></a>
+                            <a href="#" class="social-icon"><i class="bi bi-twitter-x fs-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="footer-divider my-4">
+                <p class="text-white-50 small mb-0">&copy; 2025 VAGALI. Todos os direitos reservados. Local: São Gonçalo, RJ.</p>
+            </div>
+        </footer>
+<!-- Botão Flutuante -->
+<div id="supportButton" 
+     class="position-fixed bottom-0 end-0 m-4">
+    <button class="btn btn-lg rounded-circle shadow-lg btn-primary" 
+            data-bs-toggle="collapse" 
+            data-bs-target="#chatWidget" 
+            aria-expanded="false" 
+            aria-controls="chatWidget">
+        <i class="bi bi-chat-dots fs-3"></i>
+    </button>
+</div>
+
+<!-- Janela do Chat -->
+<div id="chatWidget" 
+     class="collapse position-fixed bottom-0 end-0 m-4" 
+     style="width: 22rem; max-height: 28rem; z-index:1050;">
+    <div class="card shadow-lg border-0 h-100 d-flex flex-column">
+        
+        <!-- Cabeçalho -->
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <div class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 35px; height: 35px;">
+                    <i class="bi bi-robot fs-5"></i>
+                </div>
+                <div>
+                    <h6 class="mb-0">Assistente Virtual</h6>
+                    <small>Online agora</small>
+                </div>
+            </div>
+            <button class="btn btn-sm btn-light" data-bs-toggle="collapse" data-bs-target="#chatWidget">
+                <i class="bi bi-x-lg"></i>
+            </button>
+        </div>
+
+        <!-- Corpo (Mensagens) -->
+        <div id="chatMessages" class="card-body overflow-auto bg-light flex-grow-1">
+            <div class="text-muted small">Inicie uma conversa...</div>
+        </div>
+
+        <!-- Rodapé (Input) -->
+        <div class="card-footer">
+            <div class="input-group">
+                <input id="messageInput" type="text" class="form-control" placeholder="Digite sua mensagem...">
+                <button id="sendMessage" class="btn btn-primary">
+                    <i class="bi bi-send"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+</body>
+</html>
