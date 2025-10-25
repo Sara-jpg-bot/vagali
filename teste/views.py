@@ -30,6 +30,46 @@ def login_view(request): #o request puxa
 
     return render(request, 'teste/login.html')
 
+def cadastro_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username', '').strip()
+        telefone = request.POST.get('telefone', '').strip()
+        cpf = request.POST.get('cpf', '').strip()
+        email = request.POST.get('email', '').strip()
+        password = request.POST.get('password', '')
+        password2 = request.POST.get('password2', '')
+
+        if not all([username, email, telefone, cpf, password, password2]):
+            messages.error(request, 'Preencha todos os campos')
+            return render(request, 'teste/cadastro.html')
+        
+        if password != password2:
+            messages.error(request, 'As senhas devem ser iguais.')
+            return render(request, 'teste/cadastro.html')
+        
+        data = {
+            'username': username,
+            'telefone': telefone,
+            'cpf': cpf,
+            'email': email,
+            'password': password,
+            'password2': password2
+        }
+        serializer = ProfissionalSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            messages.success(request, 'Cadastro realizado com sucesso! Faça login.')
+            return redirect('login')
+        else:
+            for field, errs in serializer.errors.items():
+                messages.error(request, f"{field}: {', '.join(map(str, errs))}")
+
+        return render(request, 'teste/cadastro.html')
+    
+    # se for GET, apenas exibe o formulário
+    return render(request, 'teste/cadastro.html')
+
+
 # Página inicial
 def home_view(request):
     return render(request, 'teste/home.html')

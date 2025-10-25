@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cadastro</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f7f9fc; }
+    .card { max-width: 600px; margin: 48px auto; border-radius: 12px; }
+    .form-label { font-weight: 600; }
+    .msg-list { list-style: none; padding: 0; margin: 0 0 1rem 0; }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <div class="card shadow-sm">
+      <div class="card-body p-4">
+        <h3 class="card-title mb-3 text-center">Cadastro</h3>
+
+        <!-- Exibir mensagens (success / error) -->
+        {% if messages %}
+          <div class="mb-3">
+            <ul class="msg-list">
+              {% for m in messages %}
+                <li class="alert alert-{{ m.tags|default:'info' }} py-2">
+                  {{ m }}
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <form id="cadastroForm" method="POST" action="{% url 'cadastro' %}">
+          {% csrf_token %}
+
+          <div class="mb-3">
+            <label for="username" class="form-label">Nome de usuário</label>
+            <input type="text" id="username" name="username" class="form-control" required minlength="3" maxlength="50" />
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" id="email" name="email" class="form-control" required maxlength="254" />
+          </div>
+
+          <div class="mb-3">
+            <label for="telefone" class="form-label">Telefone</label>
+            <input type="text" id="telefone" name="telefone" class="form-control" placeholder="(99) 9 9999-9999" required />
+            <div class="form-text">Apenas números serão salvos (DDD + número).</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" id="cpf" name="cpf" class="form-control" placeholder="000.000.000-00" required />
+            <div class="form-text">Digite o CPF. Será verificado pelo backend.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label">Senha</label>
+            <input type="password" id="password" name="password" class="form-control" required minlength="8" />
+          </div>
+
+          <div class="mb-3">
+            <label for="password2" class="form-label">Confirme a senha</label>
+            <input type="password" id="password2" name="password2" class="form-control" required minlength="8" />
+          </div>
+
+          <div class="d-grid">
+            <button id="btnSubmit" type="submit" class="btn btn-primary">Criar conta</button>
+          </div>
+        </form>
+
+        <hr class="my-3">
+        <p class="text-center small text-muted mb-0">Já tem conta? <a href="{% url 'login' %}">Entrar</a></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // máscaras simples só para apresentação; servidor espera apenas dígitos.
+    function onlyDigits(s){ return s.replace(/\D/g,''); }
+
+    function formatCPF(v){
+      const d = onlyDigits(v).slice(0,11);
+      if (d.length<=3) return d;
+      if (d.length<=6) return d.replace(/(\d{3})(\d+)/,'$1.$2');
+      if (d.length<=9) return d.replace(/(\d{3})(\d{3})(\d+)/,'$1.$2.$3');
+      return d.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/,'$1.$2.$3-$4');
+    }
+
+    function formatPhone(v){
+      const d = onlyDigits(v);
+      if (d.length<=2) return '('+d;
+      if (d.length<=6) return d.replace(/(\d{2})(\d+)/,'($1) $2');
+      if (d.length<=10) return d.replace(/(\d{2})(\d{4})(\d+)/,'($1) $2-$3');
+      return d.replace(/(\d{2})(\d{1})(\d{4})(\d+)/,'($1) $2 $3-$4');
+    }
+
+    document.getElementById('cpf').addEventListener('input', function(){ this.value = formatCPF(this.value); });
+    document.getElementById('telefone').addEventListener('input', function(){ this.value = formatPhone(this.value); });
+
+    // Opcional: antes do submit, transforma cpf/telefone para só dígitos (o serializer também aceita formatado, mas garantimos)
+    document.getElementById('cadastroForm').addEventListener('submit', function(e){
+      const cpfField = document.getElementById('cpf');
+      const telField = document.getElementById('telefone');
+      cpfField.value = onlyDigits(cpfField.value);
+      telField.value = onlyDigits(telField.value);
+    });
+  </script>
+</body>
+</html>
